@@ -25,8 +25,224 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+                <section data-markdown>
+                    <textarea data-template>
+                        # Programación Funcional
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ---
+                        * Python
+                        * Rust
+                        * Haskell
+                        * C++
+                        ---
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ¿Qué es la *programación funcional*?
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        λ
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        | | |
+                        | ------- | ---------|
+                        | Erlang  | WhatsApp |
+                        | Scala   | Twitter  |
+                        | Haskell | Facebook |
+                        | | |
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        #### Programación Funcional
+
+                        "*la programación funcional es un paradigma de programación [...] basado en el uso de verdaderas funciones matemáticas*"
+
+                        \- ***Wikipedia ;)***
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        $$\forall x \in X, \forall y \in Y, \forall z \in Y $$
+                        $$(x,y) \in R \land (x,z) \in R \rightarrow y = z$$
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        **No hay sorpresas**
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ```python
+                        i = 0
+
+                        def evil(x): 
+                            global i
+                            i += x
+                            return i
+                        ```
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ```bash
+                        >>> evil(1)
+                        1
+                        >>> evil(1)
+                        2
+                        ```
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ### Transparencia Referencial
+                        ¿La mutabilidad es mala?
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ### Features
+                        * Memoización
+                        * Idempotencia
+                        * Modularidad
+                        * Debugging
+                        * Paralelización
+                        * Concurrencia
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ## Haskell
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        Haskell es:
+                        * Funcional
+                        * Lazy
+                        * Tipado estático
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ```haskell
+                        sum' :: (Num a) => [a] -> a
+                        sum' [] = 0
+                        sum' (x:xs) = x + sum' xs
+                        ```
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ```haskell
+                        mayor :: Int -> Bool
+                        mayor e
+                            | e < 18 = False
+                            | otherwise = True
+                        ```
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        En Rust:
+                        ```rust
+                        let x = 1;
+                        match x {
+                            1 => println!("one"),
+                            2 => println!("two"),
+                            3 => println!("three"),
+                            _ => println!("something else"),
+                        }
+                        ```
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        Quicksort en Haskell
+                        ```haskell
+                        quicksort :: (Ord a) => [a] -> [a]
+                        quicksort [] = []
+                        quicksort (x:xs) =
+                            let smallerSorted = quicksort [a | a <- xs, a <= x]
+                            biggerSorted = quicksort [a | a <- xs, a > x]
+                            in  smallerSorted ++ [x] ++ biggerSorted
+                        ```
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        [Quicksort en C++](https://github.com/arturomf94/clrs-eg/blob/master/quicksort.cpp)
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ```haskell
+                        applyTwice :: (a -> a) -> a -> a
+                        applyTwice f x = f (f x)
+                        ```
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ```bash
+                        *Main> applyTwice (++ " un porro") "un que"
+                        "un que un porro un porro"
+                        ```
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ```python
+                        map(lambda word: word.upper(), [“no me”, “grites”])
+                        ```
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ```python
+                        def greater_than_10(num):
+                            return num > 10
+
+                        filter(greater_than_10, range(15))
+                        ```
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ```haskell
+                        [1..]
+
+                        repeat " un porro"
+                        ```
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ```python
+                        def fibonacci_numbers(nums):
+                            x, y = 0, 1
+                            for _ in range(nums):
+                                x, y = y, x+y
+                                yield x
+                        ```
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ```haskell
+                        let fibs = 1:1:(zipWith (+) fibs (tail fibs))
+                        ```
+                    </textarea>
+                </section>
 			</div>
 		</div>
 
@@ -38,11 +254,18 @@
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
 				hash: true,
+                math: {
+                    mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+                    config: 'TeX-AMS_HTML-full', // See http://docs.mathjax.org/en/latest/config-files.html
+                    // pass other options into `MathJax.Hub.Config()`
+                    TeX: { Macros: { RR: "{\\bf R}" } }
+                },
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/highlight/highlight.js' },
-					{ src: 'plugin/notes/notes.js', async: true }
+					{ src: 'plugin/notes/notes.js', async: true },
+                    { src: 'plugin/math/math.js', async: true }
 				]
 			});
 		</script>
